@@ -7,6 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <style>
+    h4 {
+      margin-top:30px;
+    }
+  </style>
 </head>
 
 <body>
@@ -17,10 +25,43 @@
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
 
-    <div class="row" id="craiglist-listings">
+    <div class="row">
       <div class="col-md-12">
-        <h4 class="heading">{{listings.price}} {{listings.headline}}</h4>
-        <small>{{listings.hood}}</small>
+        <h1 class="heading"><strong>Latest Mars News</strong></h1>
+        <h3 class="heading">{{listings.news_t}}</h4>
+        <small>{{listings.news_p}}</small>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <h1 class="heading"><strong>Featured Mars Image</strong></h1>
+        <img class="img-responsive" src={{listings.image_url}}>
+      </div>
+
+      <div class=" row col-md-4">
+        <span class="border border-primary">
+          <h4 class="heading"><strong>Current Weather on Mars</strong></h4>
+          <small>{{listings.weather}}</small>
+        </span>      
+      </div>
+
+      <div class=" row col-md-4">
+        <h4 class="heading"><strong>Mars Facts</strong></h4>
+        <table border="1" class="dataframe">  <thead>    <tr style="text-align: right;">      <th></th>      <th>value</th>    </tr>    <tr>      <th></th>      <th></th>    </tr>  </thead>  <tbody>    <tr>      <th>Equatorial Diameter:</th>      <td>6,792 km</td>    </tr>    <tr>      <th>Polar Diameter:</th>      <td>6,752 km</td>    </tr>    <tr>      <th>Mass:</th>      <td>6.42 x 10^23 kg (10.7% Earth)</td>    </tr>    <tr>      <th>Moons:</th>      <td>2 (Phobos &amp; Deimos)</td>    </tr>    <tr>      <th>Orbit Distance:</th>      <td>227,943,824 km (1.52 AU)</td>    </tr>    <tr>      <th>Orbit Period:</th>      <td>687 days (1.9 years)</td>    </tr>    <tr>      <th>Surface Temperature:</th>      <td>-153 to 20 °C</td>    </tr>    <tr>      <th>First Record:</th>      <td>2nd millennium BC</td>    </tr>    <tr>      <th>Recorded By:</th>      <td>Egyptian astronomers</td>    </tr>  </tbody></table>  
+      </div>
+
+    </div>
+
+    <div cloass="row">
+      <h1 class="heading text-center"><strong>Mars Hemispheres</strong></h1>
+      <hr>
+      
+      <div class="card col-md-6">
+        <img class="card-img-top" src="#" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-text">{{listings.hemisphere}}</p>
+        </div>
       </div>
     </div>
 
