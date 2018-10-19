@@ -60,17 +60,36 @@ def scrape():
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
 
-    lst = []
+    
 
-    results = soup.find_all('div', class_='item')
-    for result in results:
-        link_text = result.find('h3').text
-    #     print(link_text)
-    #     browser.click_link_by_partial_text(link_text)
-    #     img_url = soup.find('img', class_='wide-large')['src']
-        lst.append({'title':link_text})
-    #     browser.back()
+    # results = soup.find_all('div', class_='item')
+    # for result in results:
+    #     link_text = result.find('h3').text
+    # #     print(link_text)
+    # #     browser.click_link_by_partial_text(link_text)
+    # #     img_url = soup.find('img', class_='wide-large')['src']
+    #     lst.append({'title':link_text})
+    # #     browser.back()
 
-    listings["hemisphere"] = lst
+    # url_lst = ['cerberus enhanced', 'schiaparelli enhanced', 'syrtis major enhanced', 'valles marineris enhanced']
+    # for url in url_lst:
+    #     base = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/' + url
+    #     browser.visit(base)
+    #     html = browser.html
+    #     soup = BeautifulSoup(html, 'html.parser')
+    #     img_url = soup.find('img', class_='wide-image')['src']
+    #     lst.append({'img_url':img_url})
+
+    url_lst = ['cerberus enhanced', 'schiaparelli enhanced', 'syrtis major enhanced', 'valles marineris enhanced']
+    c = 0
+    for url in url_lst:
+        base = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/' + url
+        browser.visit(base)
+        html = browser.html
+        soup = BeautifulSoup(html, 'html.parser')
+        listings["url"] = soup.find('img', class_='wide-image')['src']
+        listings["link_text"] = soup.find('h2', class_='title').text
+        c = c + 1
+        
 
     return listings
